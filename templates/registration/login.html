@@ -1,0 +1,8 @@
+{% include "registration/login_bar.html" %}
+
+<h2>login form</h2>
+<form method="post">
+	{{form.as_p}}
+	{% csrf_token %}
+	<button type="submit">login</button>
+</form>

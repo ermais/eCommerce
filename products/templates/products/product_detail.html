@@ -1,0 +1,24 @@
+{% extends 'products/base.html' %}
+{% block body %}
+<div class="container">
+
+		<div class="card col-sm-8 mt-4">
+		{% if product.productimage_set.count == 1 %}
+	  		<img src="{{ product.productimage_set.all.first.image.url }}" class="card-img-top img-responsive" alt="...">
+		{% endif %}
+	  		<div class="card-body">
+			<h5 class="card-title">{{ product.title }}</h5>
+			<p class="card-text">{{ product.description }}</p>
+				{% if product.specification_set.count > 0 %}
+					<table class="table">
+					{% for pro in product.specification_set.all %}
+						<tr><td>{{ pro.title }}</td><td>{{ pro.description }}</td></tr>
+					{% endfor %}
+					</table>
+				{% endif %}
+			<a href="#" class="btn btn-primary align-center">Add to Cart</a>
+	  	</div>
+		</div>
+</div>
+
+{% endblock %}

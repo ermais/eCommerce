@@ -1,0 +1,20 @@
+{% extends 'products/base.html' %}
+{% block body %}
+	{% if object.cartitem_set.count > 0 %}
+		<div class="container">
+		<table class="table">
+		{% for item in object.cartitem_set.all %}
+			<tr>
+				<td>{{ item.item.title }}</td>
+				<td>{{ item.quantity }}</td>
+				<td>{{ item.line_item_total }}</td>
+				<td><a href="{{ item.remove }} " class="btn btn-link">X</a> </td>
+			</tr>
+		{% endfor %}
+		<tr>
+			<td colspan="4">Total {{ object.sub_total }}</td>
+		</tr>
+		</table>
+		</div>
+	{% endif %}
+{% endblock %}
